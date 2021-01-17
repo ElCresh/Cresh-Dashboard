@@ -16,7 +16,7 @@ class CreateUpsTable extends Migration
         Schema::create('ups', function (Blueprint $table) {
             $table->id();
             $table->integer('winpower_id');
-            $table->integer('device_id');
+            $table->string('device_id');
             $table->timestamps();
         });
     }
