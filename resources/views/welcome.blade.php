@@ -1,6 +1,12 @@
 @extends('layouts.page_templates.dashboard')
 
 @section('content')
+    @php
+        use \App\Http\Controllers\UpsController;
+
+        $upses = UpsController::getUpsList();
+    @endphp
+
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -8,24 +14,37 @@
         </button>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header card-header-icon card-header-success">
-                    <div class="card-icon">
-                        <i class="material-icons">alternate_email</i>
+        @foreach ($upses as $ups)
+            @php
+                $ups_reading = UpsController::getUpsReading($ups->id);
+                //print_r($ups_reading);
+            @endphp
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon card-header-success">
+                        <div class="card-icon">
+                            <i class="material-icons">alternate_email</i>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Test 1,2,3</h4>
-                    Testing a big test
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">access_time</i> updated 4 minutes ago
+                    <div class="card-body">
+                        <h4 class="card-title">{{ $ups_reading->key }}</h4>
+                        <b>Status:</b> {{ $ups_reading->status }} <br />
+                        <b>Current load:</b> {{ $ups_reading->loadPercentMax }}% <br />
+                        <b>Est. time rem.:</b> {{ $ups_reading->batTimeRemain }} <br />
+                        {{--  TODO: Strip % from current battery capacity --}}
+                        <b>Batt. capacity:</b> {{ $ups_reading->batCapacity }} <br />
+                        <b>In. volt.:</b> {{ $ups_reading->inVolt }} <br />
+                        <b>Out. volt.:</b> {{ $ups_reading->outVolt }} <br />
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">access_time</i> updated now
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endforeach
         <div class="col-md-6">
             <div class="card card-blog">
                 <div class="card-header card-header-image">
