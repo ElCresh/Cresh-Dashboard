@@ -29,13 +29,36 @@
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{ $ups_reading->key }}</h4>
-                        <b>Status:</b> {{ $ups_reading->status }} <br />
-                        <b>Current load:</b> {{ $ups_reading->loadPercentMax }}% <br />
-                        <b>Est. time rem.:</b> {{ $ups_reading->batTimeRemain }} <br />
-                        {{--  TODO: Strip % from current battery capacity --}}
-                        <b>Batt. capacity:</b> {{ $ups_reading->batCapacity }} <br />
-                        <b>In. volt.:</b> {{ $ups_reading->inVolt }} <br />
-                        <b>Out. volt.:</b> {{ $ups_reading->outVolt }} <br />
+                        <div class="">
+                            <h5>Info</h5>
+                            <b>Status:</b> {{ $ups_reading->status }} <br />
+                        </div>
+
+                        <div class="mt-2">
+                            <h5>Input</h5>
+                            <b>In. volt.:</b> {{ $ups_reading->inVolt }} <br />
+                            <b>In. freq.:</b> {{ $ups_reading->inFreq }} <br />
+                        </div>
+
+                        <div class="mt-2">
+                            <h5>Output</h5>
+                            <b>Out. volt.:</b> {{ $ups_reading->outVolt }} <br />
+                            <b>Out. freq.:</b> {{ $ups_reading->outFreq }} <br />
+                            <b>Current load:</b> {{ $ups_reading->loadPercentMax }}% <br />
+                        </div>
+
+                        <div class="mt-2">
+                            <h5>Battery</h5>
+                            <b>Est. time rem.:</b> {{ $ups_reading->batTimeRemain }} <br />
+                            {{--  TODO: Strip % from current battery capacity --}}
+                            <b>Batt. capacity:</b> {{ $ups_reading->batCapacity }} <br />
+                        </div>
+
+                        <div class="mt-2">
+                            <h5>Last events</h5>
+                            {{ $ups_reading->lastEvent2 }} <br />
+                            {{ $ups_reading->lastEvent1 }} <br />
+                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="stats">

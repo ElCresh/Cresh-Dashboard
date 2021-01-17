@@ -12,7 +12,7 @@ class UpsController extends Controller
 
         $api_get_user = $client->request(
             'GET',
-            'https://10.0.0.2:8888/' . $id . '/json'
+            env('UPS_IP') . '/' . $id . '/json'
         );
 
         if ($api_get_user->getBody()) {
@@ -29,7 +29,7 @@ class UpsController extends Controller
 
         $api_get_user = $client->request(
             'GET',
-            'https://10.0.0.2:8888/listJson'
+            env('UPS_IP') . '/listJson'
         );
 
         if ($api_get_user->getBody()) {
