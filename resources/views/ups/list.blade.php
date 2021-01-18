@@ -6,7 +6,7 @@
             @php
                 $ups_reading = $ups->getLastReading();
             @endphp
-            <a class="col-md-6" href="{{ route('ups.history', ['id' => $ups->id]) }}">
+            <a class="col-md-6 col-lg-4" href="{{ route('ups.history', ['id' => $ups->id]) }}">
                 <div class="card">
                     <div class="card-header card-header-icon card-header-success">
                         <div class="card-icon">
@@ -41,13 +41,14 @@
                         <div class="mt-2">
                             <h5>Last events</h5>
                             @foreach ($ups->getRecentEvent() as $event)
-                                [{{ $event->date_time }}] {{ $event->description }} <br />
+                                =[{{ $event->date_time }}]= <br />
+                                {{ $event->description }} <br />
                             @endforeach
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">access_time</i> updated now
+                            <i class="material-icons">access_time</i> {{ $ups_reading->created_at }}
                         </div>
                     </div>
                 </div>

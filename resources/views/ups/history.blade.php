@@ -3,11 +3,11 @@
 @section('content')
     <div class="row">
         @foreach ($ups->getReadings() as $ups_reading)
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-4 col-xxl-2">
                 <div class="card">
-                    <div class="card-header card-header-icon card-header-success">
+                    <div class="card-header card-header-icon card-header-{{ $ups_reading->getColor() }}">
                         <div class="card-icon">
-                            <i class="material-icons">battery_charging_full</i>
+                            <i class="material-icons">{{ $ups_reading->getIcon() }}</i>
                         </div>
                     </div>
                     <div class="card-body">
@@ -38,7 +38,8 @@
                         <div class="mt-2">
                             <h5>Last events</h5>
                             @foreach ($ups->getRecentEvent() as $event)
-                                [{{ $event->date_time }}] {{ $event->description }} <br />
+                                =[{{ $event->date_time }}]= <br />
+                                {{ $event->description }} <br />
                             @endforeach
                         </div>
                     </div>

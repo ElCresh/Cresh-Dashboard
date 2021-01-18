@@ -19,7 +19,7 @@
                 $ups_reading = UpsController::getUpsReading($ups->id);
             @endphp
             
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header card-header-icon card-header-success">
                         <div class="card-icon">
@@ -57,7 +57,8 @@
                                 $events = UpsController::getUpsLastEvents($ups->id);
                             @endphp
                             @foreach ($events as $event)
-                                [{{ $event->date_time }}] {{ $event->description }} <br />
+                                =[{{ $event->date_time }}]= <br />
+                                {{ $event->description }} <br />
                             @endforeach
                         </div>
                     </div>
@@ -69,7 +70,7 @@
                 </div>
             </div>
         @endforeach
-        <div class="col-md-6">
+        <div class="col-md-6 col-lg-4">
             <div class="card card-blog">
                 <div class="card-header card-header-image">
                     <a href="#pablo">

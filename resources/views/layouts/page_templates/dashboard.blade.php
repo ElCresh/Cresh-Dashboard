@@ -67,10 +67,8 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div class="container">
-                <div class="container-fluid">
-                    @yield('content')
-                </div>
+            <div class="container-fluid pl-5 pr-5">
+                @yield('content')
             </div>
         </div>
 
