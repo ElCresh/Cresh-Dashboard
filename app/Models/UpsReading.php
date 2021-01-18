@@ -31,7 +31,7 @@ class UpsReading extends Model
             case 'AC Fail':
                 $icon = 'battery_charging_full';
                 break;
-            case 'AVR':
+            case 'AVR Mode':
                 $icon = 'battery_alert';
                 break;
             case 'Normal':
@@ -49,7 +49,7 @@ class UpsReading extends Model
             case 'AC Fail':
                 $color = 'danger';
                 break;
-            case 'AVR':
+            case 'AVR Mode':
                 $color = 'warning';
                 break;
             case 'Normal':
