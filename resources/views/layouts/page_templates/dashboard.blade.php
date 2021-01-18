@@ -50,7 +50,7 @@
         </div>
         <div class="main-panel">
             <!-- Navbar -->
-            <nav class="navbar sticky-top navbar-expand-lg navbar-transparent">
+            <nav class="navbar sticky-top navbar-expand-lg bg-secondary">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
                         <a class="navbar-brand" href="javascript:;">Dashboard</a>
@@ -67,7 +67,7 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div class="container-fluid pl-5 pr-5">
+            <div class="container-fluid pl-5 pr-5 pt-3">
                 @yield('content')
             </div>
         </div>
