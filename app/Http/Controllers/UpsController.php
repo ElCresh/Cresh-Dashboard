@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Http;
 
 class UpsController extends Controller
 {
+    function list(){
+        return view('ups/list', ['upses' => Ups::get()]);
+    }
+
+    function history($id){
+        return view('ups/history', ['ups' => Ups::findOrFail($id)]);
+    }
+
     static function getUpsReading($id){
         $ups_reading = new \stdClass;
 
@@ -129,7 +137,7 @@ class UpsController extends Controller
                 Ups::create([
                     'winpower_id' => $ups->id,
                     'device_id' => $ups_reading->device_id,
-                ])
+                ]);
             }
 
             $ups_events = self::getUpsLastEvents($ups->id);

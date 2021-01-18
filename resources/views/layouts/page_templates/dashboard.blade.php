@@ -1,3 +1,7 @@
+@php
+    $route_name = Route::currentRouteName();
+@endphp
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -23,16 +27,16 @@
                 </a></div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
-                        <li class="nav-item active">
+                        <li class="nav-item {{ ($route_name == 'home' ? 'active' : '') }}">
                             <a class="nav-link" href="/">
                                 <i class="material-icons">dashboard</i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">
-                                <i class="material-icons">person</i>
-                                <p>_</p>
+                        <li class="nav-item {{ str_contains($route_name,'ups') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('ups.list') }}">
+                                <i class="material-icons">battery_charging_full</i>
+                                <p>UPS</p>
                             </a>
                         </li>
                         <li class="nav-item active-pro ">

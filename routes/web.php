@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/ups', '\App\Http\Controllers\UpsController@list')->name('ups.list');
+Route::get('/ups/{id}', '\App\Http\Controllers\UpsController@history')->name('ups.history');
