@@ -51,6 +51,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Blade::component('ups-reading', \App\View\Components\Ups\Reading::class);
+        Blade::component('ups-event', \App\View\Components\Ups\Event::class);
     }
 
     /**

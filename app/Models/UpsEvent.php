@@ -20,4 +20,8 @@ class UpsEvent extends Model
         'date_time',
         'description',
     ];
+
+    public function getIcon(){
+        return 'notification_important';
+    }
 }

@@ -30,6 +30,10 @@ class Ups extends Model
         return UpsReading::where('winpower_id',$this->winpower_id)->where('device_id', $this->device_id)->orderBy('created_at','DESC')->first();
     }
 
+    public function getEvents(){
+        return UpsEvent::where('winpower_id',$this->winpower_id)->where('device_id', $this->device_id)->orderBy('created_at','DESC')->get();
+    }
+
     public function getRecentEvent(){
         return UpsEvent::where('winpower_id',$this->winpower_id)->where('device_id', $this->device_id)->orderBy('created_at','DESC')->limit(2)->get();
     }
