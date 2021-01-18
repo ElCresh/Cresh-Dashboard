@@ -9,11 +9,13 @@ class Reading extends Component
 
     public $upsReading;
     public $events;
+    public $showLastEvents;
 
-    public function __construct($upsReading, $events)
+    public function __construct($upsReading, $events, $showLastEvents)
     {
         $this->upsReading = $upsReading;
         $this->events = $events;
+        $this->showLastEvents = $showLastEvents;
     }
 
     /**

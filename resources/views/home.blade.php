@@ -21,7 +21,7 @@
             @endphp
             
             <div class="col-md-6 col-lg-4">
-                <x-ups-reading :ups-reading="$ups_reading" :events="$events"/>
+                <x-ups-reading :ups-reading="$ups_reading" :events="$events" :showLastEvents="true"/>
             </div>
         @endforeach
         <div class="col-md-6 col-lg-4">

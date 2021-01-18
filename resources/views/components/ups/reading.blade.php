@@ -29,13 +29,15 @@
             <b>Batt. capacity:</b> {{ $upsReading->battery_capacity_percentage }}% <br />
         </div>
 
-        <div class="mt-2">
-            <h5>Last events</h5>
-            @foreach ($events as $event)
-                =[{{ $event->date_time }}]= <br />
-                {{ $event->description }} <br />
-            @endforeach
-        </div>
+        @if($showLastEvents)
+            <div class="mt-2">
+                <h5>Last events</h5>
+                @foreach ($events as $event)
+                    =[{{ $event->date_time }}]= <br />
+                    {{ $event->description }} <br />
+                @endforeach
+            </div>
+        @endif
     </div>
     <div class="card-footer">
         <div class="stats">
