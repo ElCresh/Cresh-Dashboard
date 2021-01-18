@@ -61,4 +61,12 @@ class UpsReading extends Model
 
         return $color;
     }
+
+    public function getCreatedAtAttribute($value){
+        if($value == ''){
+            $value = 'updated now';
+        }
+
+        return $value;
+    }
 }

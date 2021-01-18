@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Blade;
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -47,6 +49,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        Blade::component('ups-reading', \App\View\Components\Ups\Reading::class);
     }
 
     /**
