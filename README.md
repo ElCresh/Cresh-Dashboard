@@ -5,4 +5,5 @@ __Supported device:__
 * WinPower compatible UPS
 
 __Planned device:__
+* UniFi Controller
 * Fritz!Box/Fritz!OS
