@@ -19,13 +19,7 @@
     </div>
     <div class="tab-content">
         <div class="tab-pane active" id="readings">
-            <div class="row">
-                @foreach ($ups->getReadings() as $ups_reading)
-                    <div class="col-md-6 col-lg-4 col-xxl-2">
-                        <x-ups-reading :ups-reading="$ups_reading" :events="$ups->getRecentEvent()" :showLastEvents="false" />
-                    </div>
-                @endforeach
-            </div>
+            {{ $upsReadingsTable }}
         </div>
         <div class="tab-pane" id="events">
             <div class="row">

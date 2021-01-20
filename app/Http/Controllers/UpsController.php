@@ -6,6 +6,8 @@ use App\Models\Ups;
 use App\Models\UpsEvent;
 use App\Models\UpsReading;
 
+use App\Tables\UpsReadingsTable;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -16,7 +18,8 @@ class UpsController extends Controller
     }
 
     function history($id){
-        return view('ups/history', ['ups' => Ups::findOrFail($id)]);
+        $ups = Ups::findOrFail($id);
+        return view('ups/history', ['ups' => $ups, 'upsReadingsTable' => (new UpsReadingsTable($ups))->setup()]);
     }
 
     static function getUpsReading($id){
