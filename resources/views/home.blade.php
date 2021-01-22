@@ -33,20 +33,18 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">{{ $device->name }} [{{ $device->mac}}]</h4>
+                            <h4 class="card-title">
+                                {{ $device->name }} [{{ $device->mac}}]
+                                {!! ($device->adopted == 1 ? '<i class="material-icons text-success">verified</i>' : '<i class="material-icons text-warning">new_releases</i>') !!}
+                                {!! ($device->model_in_lts != '' ? '<span class="badge badge-pill badge-warning">LTS</span>' : "") !!}
+                                {!! ($device->model_in_eol != '' ? '<span class="badge badge-pill badge-danger">EOL</span>' : "") !!}
+                            </h4>
 
                             <div class="">
-                                <h5>Info</h5>
+                                <h5>Details</h5>
                                 <b>Type:</b> {{ $device->type }} <br />
                                 <b>Model:</b> {{ $device->model }} <br />
-                                <b>Is LTS?</b> {{ ($device->model_in_lts != '' ? "No" : "Yes") }} <br />
-                                <b>Is EOL?</b> {{ ($device->model_in_eol != '' ? "No" : "Yes") }} <br />
-                            </div>
-
-                            <div class="mt-2">
-                                <h5>Status</h5>
                                 <b>Uptime:</b> {{ $device->uptime }} <br />
-                                <b>Is Adopted?</b> {{ ($device->adopted == 1 ? "Yes" : "No") }} <br />
                             </div>
 
                             <div class="mt-2">

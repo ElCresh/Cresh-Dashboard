@@ -48,7 +48,7 @@ class UnifiController extends Controller
             $login = $unifi_connection->login();
 
             if($login){
-                $devices = $unifi_connection->list_devices();
+                $devices = array_reverse($unifi_connection->list_devices());
             }
         }catch(\ErrorException $ex){
             // Nothing to do
