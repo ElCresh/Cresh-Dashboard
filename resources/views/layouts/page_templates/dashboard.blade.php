@@ -35,12 +35,22 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item {{ str_contains($route_name,'ups') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('ups.list') }}">
-                                <i class="material-icons">battery_charging_full</i>
-                                <p>UPS</p>
-                            </a>
-                        </li>
+                        @if (\App\Models\Ups::count() > 0)                            
+                            <li class="nav-item {{ str_contains($route_name,'ups') ? 'active' : '' }}">
+                                <a class="nav-link" href="{{ route('ups.list') }}">
+                                    <i class="material-icons">battery_charging_full</i>
+                                    <p>UPS</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if (\App\Http\Controllers\UnifiController::isAvailabile())                            
+                            <li class="nav-item {{ str_contains($route_name,'unifi') ? 'active' : '' }}">
+                                <a class="nav-link" href="#">
+                                    <i class="material-icons">network_check</i>
+                                    <p>UniFi</p>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item active-pro ">
                             <a class="nav-link" href="http://andreacrescentini.com" target="_blank">
                                 <i class="material-icons">alternate_email</i>

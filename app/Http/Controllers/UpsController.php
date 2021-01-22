@@ -22,6 +22,26 @@ class UpsController extends Controller
         return view('ups/history', ['ups' => $ups, 'upsReadingsTable' => (new UpsReadingsTable($ups))->setup()]);
     }
 
+    static function isAvailabile(){
+        $isAvailable = false;
+
+        try{
+            $client = new \GuzzleHttp\Client(['http_errors' => false, 'verify' => false]);
+
+            $api_get_user = $client->request(
+                'GET',
+                env('UPS_IP') . '/' . $id . '/json'
+            );
+
+            if ($api_get_user->getBody()) {
+                $isAvailabile = true;
+            }
+        } catch (\GuzzleHttp\Exception\ConnectException $e) {
+        } catch(\GuzzleHttp\Exception\RequestException $e) { }
+        
+        return $isAvailabile;
+    }
+
     static function getUpsReading($id){
         $ups_reading = new \stdClass;
 
@@ -48,8 +68,7 @@ class UpsController extends Controller
                 ]);
             }
         } catch (\GuzzleHttp\Exception\ConnectException $e) {
-            // Nothing to do. Default value is a valid fallback
-        }
+        } catch(\GuzzleHttp\Exception\RequestException $e) { }
 
         return $ups_reading;
     }
@@ -83,8 +102,7 @@ class UpsController extends Controller
                 }
             }
         } catch (\GuzzleHttp\Exception\ConnectException $e) {
-            // Nothing to do. Default value is a valid fallback
-        }
+        } catch(\GuzzleHttp\Exception\RequestException $e) { }
 
         return $events;
     }
@@ -117,8 +135,7 @@ class UpsController extends Controller
                 $ups_list = json_decode((string) $api_get_user->getBody());
             }
         } catch (\GuzzleHttp\Exception\ConnectException $e) {
-            // Nothing to do. Default value is a valid fallback
-        }
+        } catch(\GuzzleHttp\Exception\RequestException $e) { }
 
         return $ups_list;
     }
