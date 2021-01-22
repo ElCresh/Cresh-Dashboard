@@ -56,4 +56,15 @@ class UnifiController extends Controller
         
         return $devices;
     }
+
+    // TODO: Temponary function. This function need to be relocated
+    // inside Model that need to be created
+    static function seconds2human($ss) {
+        $s = $ss%60;
+        $m = floor(($ss%3600)/60);
+        $h = floor(($ss%86400)/3600);
+        $d = floor($ss/86400);
+        
+        return "$d days, $h:$m:$s";
+    }
 }

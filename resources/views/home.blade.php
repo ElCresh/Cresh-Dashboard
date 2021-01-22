@@ -44,7 +44,7 @@
                                 <h5>Details</h5>
                                 <b>Type:</b> {{ $device->type }} <br />
                                 <b>Model:</b> {{ $device->model }} <br />
-                                <b>Uptime:</b> {{ $device->uptime }} <br />
+                                <b>Uptime:</b> {{ UnifiController::seconds2human($device->uptime) }} <br />
                             </div>
 
                             <div class="mt-2">
