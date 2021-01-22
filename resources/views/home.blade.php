@@ -34,7 +34,7 @@
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">
-                                {{ $device->name }} [{{ $device->mac}}]
+                                {{ isset($device->name) ? $device->name : '' }} [{{ $device->mac}}]
                                 {!! ($device->adopted == 1 ? '<i class="material-icons text-success">verified</i>' : '<i class="material-icons text-warning">new_releases</i>') !!}
                                 {!! ($device->model_in_lts != '' ? '<span class="badge badge-pill badge-warning">LTS</span>' : "") !!}
                                 {!! ($device->model_in_eol != '' ? '<span class="badge badge-pill badge-danger">EOL</span>' : "") !!}
@@ -76,7 +76,7 @@
 
                         @foreach (UnifiController::getUnifiAlerts() as $alarm)
                             <p>
-                                <strong>{{ \Carbon\Carbon::parse($alarm->handled_time)->format('Y-m-d H:i:s')  }} => {{ $alarm->ap_name }} [{{ $alarm->ap }}]</strong> <br />
+                                <strong>{{ \Carbon\Carbon::parse($alarm->handled_time)->format('Y-m-d H:i:s')  }} => {{ isset($alarm->ap_name) ? $alarm->ap_name : '' }} [{{ isset($alarm->ap) ? $alarm->ap : '' }}]</strong> <br />
                                 {{ $alarm->msg }}
                             </p>
                         @endforeach
