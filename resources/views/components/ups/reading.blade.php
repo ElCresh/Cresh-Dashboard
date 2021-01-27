@@ -26,7 +26,7 @@
 
         <div class="mt-2">
             <h5>Battery</h5>
-            <b>Batt. capacity:</b> {{ $upsReading->battery_capacity_percentage }}% <br />
+            <b>Batt. charge:</b> {{ $upsReading->battery_capacity_percentage }}% <br />
         </div>
 
         @if($showLastEvents)

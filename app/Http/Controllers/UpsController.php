@@ -19,7 +19,21 @@ class UpsController extends Controller
 
     function history($id){
         $ups = Ups::findOrFail($id);
-        return view('ups/history', ['ups' => $ups, 'upsReadingsTable' => (new UpsReadingsTable($ups))->setup()]);
+
+        $chats = array();
+        
+
+        foreach($ups->getReadings() as $reading){
+            $charts['timeline'][] = $reading->created_at;
+            $charts['datas']['voltage_in'][] = $reading->voltage_in;
+            $charts['datas']['voltage_out'][] = $reading->voltage_out;
+            $charts['datas']['frequency_in'][] = $reading->frequency_in;
+            $charts['datas']['frequency_out'][] = $reading->frequency_out;
+            $charts['datas']['current_load_percentage'][] = $reading->current_load_percentage;
+            $charts['datas']['battery_capacity_percentage'][] = $reading->battery_capacity_percentage;
+        }
+
+        return view('ups/history', ['ups' => $ups, 'charts' => $charts, 'upsReadingsTable' => (new UpsReadingsTable($ups))->setup()]);
     }
 
     static function isAvailabile(){

@@ -18,8 +18,12 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
-        <!-- Material Dashboard CSS -->
+        <!-- CSS -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        <!--   Core JS Files   -->
+        <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
         <div class="wrapper">
@@ -84,8 +88,6 @@
             </div>
         </div>
 
-        <!--   Core JS Files   -->
-        <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
         <script>
             $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
             $('.main-panel').perfectScrollbar('destroy');

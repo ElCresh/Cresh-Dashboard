@@ -57,6 +57,8 @@ class UpsReadingsTable extends AbstractTable
         $table->column('frequency_in')->title('Frequency in')->appendsHtml(' Hz', true);
         $table->column('voltage_out')->title('Voltage out')->appendsHtml(' V', true);
         $table->column('frequency_out')->title('Frequency out')->appendsHtml(' Hz', true);
+        $table->column('current_load_percentage')->title('Load')->appendsHtml(' %',true);
+        $table->column('battery_capacity_percentage')->title('Batt. charge')->appendsHtml(' %',true);
     }
 
     /**
